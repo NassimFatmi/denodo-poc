@@ -1,0 +1,10 @@
+﻿CREATE OR REPLACE VIEW iv_contrats FOLDER = '/2 - integration'
+    PRIMARY KEY ( 'id' ) (
+    seniority (description = 'La seniorité est calculé en jour
+Date d''entrée - date de fin')
+ )
+ AS SELECT iv_global_view.id AS id, iv_global_view.sal_mat_paie AS code_paie, iv_global_view.sal_empli AS code_employe, formatdate('yyyyMMdd', to_timestamp('MM/dd/yyyy', iv_global_view.date_ent)) AS date_ent, formatdate('yyyyMMdd', to_timestamp('MM/dd/yyyy', iv_global_view.date_fin)) AS date_fin, iv_global_view.sal_motifsot AS id_motifsot, iv_global_view.sal_motif_ent AS sal_motif_ent, iv_global_view.type_contrat AS type_contrat, iv_global_view.sal_catsoc AS sal_catsoc, iv_global_view.sal_hmens AS sal_hmens, iv_global_view.code_etabl AS code_etabl, iv_global_view.id_paye AS id_paye, cast((to_timestamp('MM/dd/yyyy', iv_global_view.date_fin)-to_timestamp('MM/dd/yyyy', iv_global_view.date_ent)) AS DECIMAL) AS seniority, iv_global_view.id_type_regime AS id_type_regime FROM iv_global_view;
+
+ALTER VIEW iv_contrats
+ LAYOUT (iv_global_view = [206, 0, 200, 200]);
+

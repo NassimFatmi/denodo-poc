@@ -1,0 +1,42 @@
+﻿CREATE OR REPLACE WRAPPER DF ds_employees
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_employees
+    OUTPUTSCHEMA (
+        sal_empl = 'SAL_EMPL',
+        full_name = 'FULL_NAME',
+        date_nais = 'DATE_NAIS',
+        ind_sexe = 'IND_SEXE',
+        mail = 'MAIL',
+        nb_enf = 'NB_ENF',
+        age = 'AGE'
+    );
+
+CREATE OR REPLACE TABLE bv_employees I18N fr_euro (
+        sal_empl:text,
+        full_name:text,
+        date_nais:text,
+        ind_sexe:text,
+        mail:text,
+        nb_enf:int,
+        age:int
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    PRIMARY KEY ( 'sal_empl' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_employees(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD sal_empl NOS ZERO ()
+             ADD full_name NOS ZERO ()
+             ADD date_nais NOS ZERO ()
+             ADD ind_sexe NOS ZERO ()
+             ADD mail NOS ZERO ()
+             ADD nb_enf NOS ZERO ()
+             ADD age NOS ZERO ()
+        )
+        OUTPUTLIST (age, date_nais, full_name, ind_sexe, mail, nb_enf, sal_empl
+        )
+        WRAPPER (df ds_employees)
+    );
+

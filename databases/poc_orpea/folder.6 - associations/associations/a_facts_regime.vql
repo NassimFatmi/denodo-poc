@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_facts_regime REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT facts_table iv_dim_type_regime PRINCIPAL (0,1)
+    ENDPOINT iv_dim_type_regime facts_table (0,*)
+    ADD MAPPING id_type_regime=id_dim_type_regime;
+
+ALTER ASSOCIATION a_facts_regime
+ LAYOUT (iv_dim_type_regime = [275, 130, 200, 200], facts_table = [317, 37, 200, 200]);
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_etablissement FOLDER = '/2 - integration' AS SELECT DISTINCT bv_etablissement.code_etabl AS code_etabl, bv_etablissement.nom_etabl AS nom_etabl, bv_etablissement.code_paye AS code_paye FROM bv_etablissement;
+
+ALTER VIEW iv_etablissement
+ LAYOUT (bv_etablissement = [20, 20, 200, 200]);
+

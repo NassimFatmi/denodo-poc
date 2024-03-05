@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dim_type_employé FOLDER = '/2 - integration' AS SELECT rownum() AS id_type_empl, sal_catsoc AS type_employee FROM iv_global_view GROUP BY sal_catsoc;
+
+ALTER VIEW iv_dim_type_employé
+ LAYOUT (iv_global_view = [20, 20, 200, 200]);
+

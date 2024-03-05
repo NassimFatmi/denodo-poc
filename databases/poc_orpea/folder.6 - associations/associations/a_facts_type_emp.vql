@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_facts_type_emp REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT facts_table iv_dim_type_employé PRINCIPAL (0,1)
+    ENDPOINT iv_dim_type_employé facts_table (0,*)
+    ADD MAPPING id_type_empl=id_dim_type_empl;
+
+ALTER ASSOCIATION a_facts_type_emp
+ LAYOUT (iv_dim_type_employé = [207, 24, 200, 200], facts_table = [315, 57, 200, 200]);
+

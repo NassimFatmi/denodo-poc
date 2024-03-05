@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_facts_dates_fin REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT facts_table iv_dim_dates_fin PRINCIPAL (0,1)
+    ENDPOINT iv_dim_dates_fin facts_table (0,*)
+    ADD MAPPING id_date=id_dim_date_fin;
+
+ALTER ASSOCIATION a_facts_dates_fin
+ LAYOUT (iv_dim_dates_fin = [194, 151, 200, 200], facts_table = [396, 47, 200, 200]);
+

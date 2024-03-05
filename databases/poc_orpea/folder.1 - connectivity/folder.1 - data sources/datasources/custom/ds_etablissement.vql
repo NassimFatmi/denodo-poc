@@ -1,0 +1,27 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_etablissement
+    FOLDER = '/1 - connectivity/1 - data sources'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM ds_etablissement
+    FOLDER = '/1 - connectivity/1 - data sources'
+    DATASOURCENAME=ds_etablissement
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.poc_orpea.folder.1 - connectivity.folder.1 - data sources.views.custom.ds_etablissement.File location.ROUTE.LOCAL.PATH}',
+      'Worksheet' = 'etablissement',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Start cell' = 'A4',
+      'Has headers' = false,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        code_etabl = 'Column_0' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        column_1 = 'Column_1' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        column_2 = 'Column_2' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        nom_etabl = 'Column_3' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        column_4 = 'Column_4' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        code_paye = 'Column_5' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+    );
+

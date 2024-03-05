@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dim_etablissement FOLDER = '/2 - integration' AS SELECT iv_etablissement.code_etabl AS code_etabl, iv_etablissement.nom_etabl AS nom_etabl, bv_etablissement_payes.nom_payé AS nom_payé FROM iv_etablissement AS iv_etablissement INNER JOIN bv_etablissement_payes AS bv_etablissement_payes ON iv_etablissement.code_paye = bv_etablissement_payes.id_paye ;
+
+ALTER VIEW iv_dim_etablissement
+ LAYOUT (iv_etablissement = [20, 20, 200, 200], bv_etablissement_payes = [330, 51, 200, 200]);
+

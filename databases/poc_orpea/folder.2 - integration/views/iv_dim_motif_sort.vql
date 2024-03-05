@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dim_motif_sort FOLDER = '/2 - integration' AS SELECT iv_global_view.code_motif_sort AS code_motif_sort, iv_global_view.desc_motif_sort AS desc_motif_sort FROM iv_global_view;
+
+ALTER VIEW iv_dim_motif_sort
+ LAYOUT (iv_global_view = [20, 20, 200, 200]);
+

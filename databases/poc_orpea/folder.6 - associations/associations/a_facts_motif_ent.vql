@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_facts_motif_ent REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT iv_dim_motif_ent facts_table (0,*)
+    ENDPOINT facts_table iv_dim_motif_ent PRINCIPAL (0,1)
+    ADD MAPPING id_dim_motif_ent=id_motif_ent;
+
+ALTER ASSOCIATION a_facts_motif_ent
+ LAYOUT (facts_table = [1, 18, 200, 200], iv_dim_motif_ent = [355, 42, 200, 200]);
+

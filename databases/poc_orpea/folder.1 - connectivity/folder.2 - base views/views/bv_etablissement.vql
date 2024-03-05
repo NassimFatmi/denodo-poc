@@ -1,0 +1,26 @@
+﻿CREATE OR REPLACE TABLE bv_etablissement I18N fr_euro (
+        code_etabl:int (sourcetypeid = '4'),
+        column_1:text (sourcetypeid = '12'),
+        column_2:text (sourcetypeid = '12'),
+        nom_etabl:text (sourcetypeid = '12'),
+        column_4:text (sourcetypeid = '12'),
+        code_paye:int (sourcetypeid = '4')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_etablissement(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD code_etabl (any) OPT ANY
+             ADD column_1 (any) OPT ANY
+             ADD column_2 (any) OPT ANY
+             ADD nom_etabl (any) OPT ANY
+             ADD column_4 (any) OPT ANY
+             ADD code_paye (any) OPT ANY
+        )
+        OUTPUTLIST (code_etabl, code_paye, column_1, column_2, column_4, nom_etabl
+        )
+        WRAPPER (custom ds_etablissement)
+    );
+

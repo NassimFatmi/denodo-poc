@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_facts_motif_sort REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT facts_table iv_dim_motif_sort PRINCIPAL (0,1)
+    ENDPOINT iv_dim_motif_sort facts_table (0,*)
+    ADD MAPPING code_motif_sort=id_dim_motif_sort;
+
+ALTER ASSOCIATION a_facts_motif_sort
+ LAYOUT (iv_dim_motif_sort = [151, 149, 200, 200], facts_table = [320, 55, 200, 200]);
+

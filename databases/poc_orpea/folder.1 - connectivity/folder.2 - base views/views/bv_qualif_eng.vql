@@ -1,0 +1,26 @@
+﻿CREATE OR REPLACE WRAPPER DF ds_qualif_eng
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_qualif_eng
+    OUTPUTSCHEMA (
+        qualif_fr = 'Column0',
+        qualif_en = 'Column1'
+    );
+
+CREATE OR REPLACE TABLE bv_qualif_eng I18N fr_euro (
+        qualif_fr:text,
+        qualif_en:text
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_qualif_eng(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD qualif_fr NOS ZERO ()
+             ADD qualif_en NOS ZERO ()
+        )
+        OUTPUTLIST (qualif_en, qualif_fr
+        )
+        WRAPPER (df ds_qualif_eng)
+    );
+

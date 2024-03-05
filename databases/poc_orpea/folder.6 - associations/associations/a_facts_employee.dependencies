@@ -1,0 +1,26 @@
+﻿/databases/poc_orpea/folder.6 - associations/6 - associations.vql
+/databases/poc_orpea/folder.2 - integration/2 - integration.vql
+/databases/poc_orpea/folder.1 - connectivity/1 - connectivity.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.2 - base views/2 - base views.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.1 - data sources/1 - data sources.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.1 - data sources/datasources/jdbc/ds_sal_data.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.2 - base views/views/bv_entreprise.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.1 - data sources/datasources/df/ds_employees.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.2 - base views/views/bv_employees.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.1 - data sources/datasources/custom/ds_etablissement.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.2 - base views/views/bv_etablissement.vql
+/databases/poc_orpea/folder.2 - integration/views/iv_etablissement.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.1 - data sources/datasources/custom/ds_etablissement_payes.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.2 - base views/views/bv_etablissement_payes.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.1 - data sources/datasources/custom/ds_etablissement_motif_sort.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.2 - base views/views/bv_etablissement_motif_sort.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.1 - data sources/datasources/df/ds_qualif_eng.vql
+/databases/poc_orpea/folder.1 - connectivity/folder.2 - base views/views/bv_qualif_eng.vql
+/databases/poc_orpea/folder.2 - integration/views/iv_global_view.vql
+/databases/poc_orpea/folder.2 - integration/views/iv_dim_employees.vql
+/databases/poc_orpea/folder.3 - business/3 - business.vql
+/databases/poc_orpea/folder.2 - integration/views/iv_contrats.vql
+/databases/poc_orpea/folder.2 - integration/views/iv_dim_motif_ent.vql
+/databases/poc_orpea/folder.2 - integration/views/iv_dim_type_contrat.vql
+/databases/poc_orpea/folder.2 - integration/views/iv_dim_type_employé.vql
+/databases/poc_orpea/folder.3 - business/views/facts_table.vql

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dim_country FOLDER = '/2 - integration' AS SELECT nom_payé AS nom_payé, id_paye AS id_paye FROM iv_global_view GROUP BY id_paye, nom_payé;
+
+ALTER VIEW iv_dim_country
+ LAYOUT (iv_global_view = [20, 20, 200, 200]);
+

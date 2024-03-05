@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATABASE poc_orpea '';
+
+ALTER DATABASE poc_orpea
+  CHARSET DEFAULT;
+

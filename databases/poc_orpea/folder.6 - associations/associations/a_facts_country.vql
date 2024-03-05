@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_facts_country REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT facts_table iv_dim_country PRINCIPAL (0,1)
+    ENDPOINT iv_dim_country facts_table (0,*)
+    ADD MAPPING id_paye=id_dim_country;
+
+ALTER ASSOCIATION a_facts_country
+ LAYOUT (iv_dim_country = [170, 103, 200, 200], facts_table = [359, 90, 200, 200]);
+

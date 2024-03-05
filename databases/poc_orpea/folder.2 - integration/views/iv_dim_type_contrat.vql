@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dim_type_contrat FOLDER = '/2 - integration' AS SELECT type_contrat AS type_contrat, rownum() AS id_type_contrat FROM iv_global_view GROUP BY type_contrat;
+
+ALTER VIEW iv_dim_type_contrat
+ LAYOUT (iv_global_view = [20, 20, 200, 200]);
+

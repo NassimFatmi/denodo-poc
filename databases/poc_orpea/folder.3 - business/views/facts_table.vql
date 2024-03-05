@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW facts_table FOLDER = '/3 - business'
+    PRIMARY KEY ( 'id' ) AS SELECT iv_salarié.id AS id, iv_salarié.code_paie AS id_paie, iv_salarié.code_employe AS id_dim_code_employe, iv_salarié.date_ent AS id_dim_date_ent, iv_salarié.date_fin AS id_dim_date_fin, iv_salarié.id_motifsot AS id_dim_motif_sort, iv_dim_motif_ent.id_motif_ent AS id_dim_motif_ent, iv_dim_type_contrat.id_type_contrat AS id_dim_type_contrat, iv_dim_type_employé.id_type_empl AS id_dim_type_empl, iv_salarié.code_etabl AS id_dim_etabli, iv_salarié.id_paye AS id_dim_country, iv_salarié.id_type_regime AS id_dim_type_regime, iv_salarié.sal_hmens AS sal_hmens, iv_salarié.seniority AS seniority FROM ((iv_contrats AS iv_salarié INNER JOIN iv_dim_motif_ent AS iv_dim_motif_ent ON iv_salarié.sal_motif_ent = iv_dim_motif_ent.nom_motif_ent ) INNER JOIN iv_dim_type_contrat AS iv_dim_type_contrat ON iv_salarié.type_contrat = iv_dim_type_contrat.type_contrat ) INNER JOIN iv_dim_type_employé AS iv_dim_type_employé ON iv_salarié.sal_catsoc = iv_dim_type_employé.type_employee ;
+
+ALTER VIEW facts_table
+ LAYOUT (iv_contrats = [20, 20, 200, 200], iv_dim_motif_ent = [383, 19, 200, 200], iv_dim_type_contrat = [395, 127, 200, 200], iv_dim_type_employé = [368, 229, 200, 200]);
+

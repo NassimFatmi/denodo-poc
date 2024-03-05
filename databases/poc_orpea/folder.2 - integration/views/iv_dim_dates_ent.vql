@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_dim_dates_ent FOLDER = '/2 - integration'
+    PRIMARY KEY ( 'date_id' ) AS SELECT DISTINCT formatdate('yyyyMMdd', to_timestamp('MM/dd/yyyy', iv_global_view.date_ent)) AS date_id, to_timestamp('MM/dd/yyyy', iv_global_view.date_ent) AS date FROM iv_global_view;
+
+ALTER VIEW iv_dim_dates_ent
+ LAYOUT (iv_global_view = [20, 20, 200, 200]);
+

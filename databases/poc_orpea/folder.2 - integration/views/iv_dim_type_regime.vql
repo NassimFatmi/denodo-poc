@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dim_type_regime FOLDER = '/2 - integration' AS SELECT type_regime AS type_regime, id_type_regime AS id_type_regime FROM iv_global_view GROUP BY id_type_regime, type_regime;
+
+ALTER VIEW iv_dim_type_regime
+ LAYOUT (iv_global_view = [20, 20, 200, 200]);
+

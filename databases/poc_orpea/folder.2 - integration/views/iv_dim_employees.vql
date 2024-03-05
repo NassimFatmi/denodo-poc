@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_dim_employees FOLDER = '/2 - integration'
+    PRIMARY KEY ( 'sal_empl' ) AS SELECT iv_global_view.sal_empl AS sal_empl, iv_global_view.full_name AS full_name, to_timestamp('yyyy-MM-dd', concat((getyear(to_timestamp('MM/dd/yyyy', iv_global_view.date_ent))-iv_global_view.age), '-', getmonth(iv_global_view.date_nais), '-', getday(iv_global_view.date_nais))) AS date_nais, case WHEN (iv_global_view.ind_sexe = 'female') THEN 'Femme' ELSE case WHEN (iv_global_view.ind_sexe = 'mal') THEN 'Homme' ELSE iv_global_view.ind_sexe END END AS ind_sexe, iv_global_view.mail AS mail, iv_global_view.nb_enf AS nb_enf, iv_global_view.age AS age, case WHEN (age < 25) THEN '< 25' ELSE case WHEN ((age >= 25 AND age <= 44)) THEN '25 - 34' ELSE case WHEN ((age >= 45 AND age <= 54)) THEN '45 - 54' ELSE case WHEN ((age >= 55 AND age <= 59)) THEN '55 - 59' ELSE '> 60' END END END END AS categorie_age FROM iv_global_view;
+
+ALTER VIEW iv_dim_employees
+ LAYOUT (iv_global_view = [20, 20, 200, 200]);
+

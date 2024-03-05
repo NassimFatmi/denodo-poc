@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_facts_etabli REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT iv_dim_etablissement facts_table PRINCIPAL (0,1)
+    ENDPOINT facts_table iv_dim_etablissement (0,*)
+    ADD MAPPING id_dim_etabli=code_etabl;
+
+ALTER ASSOCIATION a_facts_etabli
+ LAYOUT (facts_table = [159, 92, 200, 200], iv_dim_etablissement = [466, 65, 200, 200]);
+

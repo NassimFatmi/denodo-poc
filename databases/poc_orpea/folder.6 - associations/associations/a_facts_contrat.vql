@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_facts_contrat REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT facts_table iv_dim_type_contrat PRINCIPAL (0,1)
+    ENDPOINT iv_dim_type_contrat facts_table (0,*)
+    ADD MAPPING id_type_contrat=id_dim_type_contrat;
+
+ALTER ASSOCIATION a_facts_contrat
+ LAYOUT (iv_dim_type_contrat = [359, 101, 200, 200], facts_table = [295, 69, 200, 200]);
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dim_motif_ent FOLDER = '/2 - integration' AS SELECT sal_motif_ent AS nom_motif_ent, rownum() AS id_motif_ent FROM iv_global_view GROUP BY sal_motif_ent;
+
+ALTER VIEW iv_dim_motif_ent
+ LAYOUT (iv_global_view = [20, 20, 200, 200]);
+
