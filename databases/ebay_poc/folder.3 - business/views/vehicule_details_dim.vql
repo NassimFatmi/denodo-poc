@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW vehicule_details_dim FOLDER = '/3 - business'
+    PRIMARY KEY ( 'id_vehicule_details' ) AS SELECT iv_vehicule_details.id_vehicule_details AS id_vehicule_details, iv_vehicule_details.year_of_registration AS year_of_registration, iv_vehicule_details.month_of_registration AS month_of_registration, iv_vehicule_details.kilometer AS kilometer, iv_vehicule_details.registration_month_alpha AS registration_month_alpha, iv_vehicule_details.not_repaired_damage AS not_repaired_damage FROM iv_vehicule_details;
+
+ALTER VIEW vehicule_details_dim
+ LAYOUT (iv_vehicule_details = [20, 20, 200, 200]);
+

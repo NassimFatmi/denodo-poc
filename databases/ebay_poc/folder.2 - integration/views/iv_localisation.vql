@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_localisation FOLDER = '/2 - integration'
+    PRIMARY KEY ( 'postal_code' ) AS SELECT bv_postal_codes.postalcode AS postal_code, bv_postal_codes.placename AS place_name, bv_postal_codes.state AS state, bv_postal_codes.stateabbreviation AS state_abbreviation, bv_postal_codes.city AS city, bv_postal_codes.latitude AS latitude, bv_postal_codes.longitude AS longitude FROM bv_postal_codes;
+
+ALTER VIEW iv_localisation
+ LAYOUT (bv_postal_codes = [263, 107, 200, 200]);
+

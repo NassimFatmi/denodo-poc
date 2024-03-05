@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW sellers_dim FOLDER = '/3 - business' AS SELECT iv_seller.id_seller AS id_seller, iv_seller.seller AS seller, iv_seller.offertype AS offer_type FROM iv_seller;
+
+ALTER VIEW sellers_dim
+ LAYOUT (iv_seller = [20, 20, 200, 200]);
+

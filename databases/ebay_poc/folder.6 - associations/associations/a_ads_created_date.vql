@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_ads_created_date REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT ads_fact dates_created_dim PRINCIPAL (0,1)
+    ENDPOINT dates_created_dim ads_fact (0,*)
+    ADD MAPPING id=id_dim_date_created;
+
+ALTER ASSOCIATION a_ads_created_date
+ LAYOUT (dates_created_dim = [173, 4, 200, 200], ads_fact = [490, 45, 200, 200]);
+

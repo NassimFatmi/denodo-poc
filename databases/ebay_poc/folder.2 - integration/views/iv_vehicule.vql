@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_vehicule FOLDER = '/2 - integration'
+    PRIMARY KEY ( 'id_vehicule' ) AS SELECT iv_ads_localisation_all.id_vehicule AS id_vehicule, iv_ads_localisation_all.model AS model, iv_ads_localisation_all.brand AS brand, iv_ads_localisation_all.vehicletype AS vehicle_type, iv_ads_localisation_all.gearbox AS gearbox, iv_ads_localisation_all.powerps AS power_ps, iv_ads_localisation_all.fueltype AS fuel_type, iv_ads_localisation_all.id_vehicule_details AS id_vehicule_details FROM iv_ads_localisation_all;
+
+ALTER VIEW iv_vehicule
+ LAYOUT (iv_ads_localisation_all = [61, 23, 200, 200]);
+

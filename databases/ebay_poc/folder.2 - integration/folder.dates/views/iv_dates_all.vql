@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dates_all FOLDER = '/2 - integration/dates' AS SELECT bv_auto.datecrawled AS datecrawled, bv_auto.datecreated AS datecreated, bv_auto.lastseen AS lastseen FROM bv_auto;
+
+ALTER VIEW iv_dates_all
+ LAYOUT (bv_auto = [197, 147, 200, 200]);
+

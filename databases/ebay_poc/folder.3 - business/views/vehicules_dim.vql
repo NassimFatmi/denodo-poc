@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW vehicules_dim FOLDER = '/3 - business'
+    PRIMARY KEY ( 'id_vehicule' ) AS SELECT iv_vehicule.id_vehicule AS id_vehicule, iv_vehicule.vehicle_type AS vehicle_type, iv_vehicule.gearbox AS gearbox, iv_vehicule.power_ps AS power_ps, iv_vehicule.fuel_type AS fuel_type, iv_vehicule.brand AS brand, iv_vehicule.id_vehicule_details AS id_vehicule_details, iv_vehicule.model AS model FROM iv_vehicule;
+
+ALTER VIEW vehicules_dim
+ LAYOUT (iv_vehicule = [20, 20, 200, 200]);
+

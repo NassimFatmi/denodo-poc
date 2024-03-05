@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_dates_lastseen FOLDER = '/2 - integration/dates' AS SELECT cast(formatdate('yyyy-MM-dd hh:mm:ss', iv_dates_all.lastseen) AS TIMESTAMP) AS lastseen FROM iv_dates_all;
+
+ALTER VIEW iv_dates_lastseen
+ LAYOUT (iv_dates_all = [20, 20, 200, 200]);
+

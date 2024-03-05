@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_dates_crawled FOLDER = '/2 - integration/dates'
+    PRIMARY KEY ( 'id' ) AS SELECT DISTINCT formatdate('yyyyMMddhhmmss', iv_dates_all.datecrawled) AS id, cast(formatdate('yyyy-MM-dd hh:mm:ss', iv_dates_all.datecrawled) AS TIMESTAMP) AS date FROM iv_dates_all;
+
+ALTER VIEW iv_dates_crawled
+ LAYOUT (iv_dates_all = [20, 20, 200, 200]);
+

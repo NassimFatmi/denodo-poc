@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_dates_created FOLDER = '/2 - integration/dates'
+    PRIMARY KEY ( 'id' ) AS SELECT formatdate('yyyyMMdd', iv_dates_all.datecreated) AS id, iv_dates_all.datecreated AS date FROM iv_dates_all;
+
+ALTER VIEW iv_dates_created
+ LAYOUT (iv_dates_all = [20, 20, 200, 200]);
+

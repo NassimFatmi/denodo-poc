@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_vehicules_prices FOLDER = '/2 - integration' AS SELECT brand AS brand, model AS model, avg(price) AS mean_price, stdev(price) AS stdv_price FROM bv_auto GROUP BY model, brand;
+
+ALTER VIEW iv_vehicules_prices
+ LAYOUT (bv_auto = [210, 103, 200, 200]);
+

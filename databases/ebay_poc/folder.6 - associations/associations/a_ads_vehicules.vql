@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_ads_vehicules REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT ads_fact vehicules_dim PRINCIPAL (0,1)
+    ENDPOINT vehicules_dim ads_fact (0,*)
+    ADD MAPPING id_vehicule=id_dim_vehicule;
+
+ALTER ASSOCIATION a_ads_vehicules
+ LAYOUT (vehicules_dim = [10, 10, 200, 200], ads_fact = [524, 2, 200, 200]);
+

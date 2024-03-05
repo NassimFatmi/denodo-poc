@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dates_created_dim FOLDER = '/3 - business' AS SELECT iv_dates_created.id AS id, iv_dates_created.date AS date FROM iv_dates_created;
+
+ALTER VIEW dates_created_dim
+ LAYOUT (iv_dates_created = [217, 173, 200, 200]);
+

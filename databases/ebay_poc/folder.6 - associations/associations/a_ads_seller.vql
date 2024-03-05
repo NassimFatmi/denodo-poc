@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_ads_seller REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT ads_fact sellers_dim PRINCIPAL (0,1)
+    ENDPOINT sellers_dim ads_fact (0,*)
+    ADD MAPPING id_seller=id_dim_seller;
+
+ALTER ASSOCIATION a_ads_seller
+ LAYOUT (sellers_dim = [10, 10, 200, 200], ads_fact = [266, 13, 200, 200]);
+

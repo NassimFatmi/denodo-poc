@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_ads_crawled_date REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT dates_crawled_dim ads_fact (0,*)
+    ENDPOINT ads_fact dates_crawled_dim PRINCIPAL (0,1)
+    ADD MAPPING id_dim_date_crawled=id;
+
+ALTER ASSOCIATION a_ads_crawled_date
+ LAYOUT (ads_fact = [196, 70, 200, 200], dates_crawled_dim = [434, 51, 200, 200]);
+

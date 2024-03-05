@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW localisations_dim FOLDER = '/3 - business'
+    PRIMARY KEY ( 'postal_code' ) AS SELECT iv_localisation.postal_code AS postal_code, iv_localisation.place_name AS place_name, iv_localisation.state AS state, iv_localisation.state_abbreviation AS state_abbreviation, iv_localisation.city AS city, iv_localisation.latitude AS latitude, iv_localisation.longitude AS longitude FROM iv_localisation;
+
+ALTER VIEW localisations_dim
+ LAYOUT (iv_localisation = [20, 20, 200, 200]);
+

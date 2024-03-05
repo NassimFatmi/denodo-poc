@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW ads_vehicule FOLDER = '/4 - report views' AS SELECT ads_fact.id_ad AS id_ad, ads_fact.name AS name, ads_fact.price AS price, ads_fact.first_time_seen AS first_time_seen, ads_fact.life_time AS life_time, vehicules_dim.vehicle_type AS vehicle_type, vehicules_dim.gearbox AS gearbox, vehicules_dim.power_ps AS power_ps, vehicules_dim.fuel_type AS fuel_type, vehicules_dim.brand AS brand, vehicules_dim.model AS model FROM ads_fact AS ads_fact INNER JOIN vehicules_dim AS vehicules_dim ON ads_fact.id_dim_vehicule = vehicules_dim.id_vehicule ;
+
+ALTER VIEW ads_vehicule
+ LAYOUT (ads_fact = [20, 20, 200, 200], vehicules_dim = [415, 20, 200, 200]);
+

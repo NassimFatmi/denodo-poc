@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_seller FOLDER = '/2 - integration'
+    PRIMARY KEY ( 'id_seller' ) AS SELECT rownum() AS id_seller, seller AS seller, offertype AS offertype FROM iv_ads_localisation_all GROUP BY offertype, seller;
+
+ALTER VIEW iv_seller
+ LAYOUT (iv_ads_localisation_all = [368, 164, 200, 200]);
+

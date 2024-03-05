@@ -1,0 +1,45 @@
+﻿CREATE OR REPLACE WRAPPER DF ds_postal_codes
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_postal_codes
+    OUTPUTSCHEMA (
+        postalcode = 'Postal Code',
+        placename = 'Place Name',
+        state = 'State',
+        stateabbreviation = 'State Abbreviation',
+        city = 'City',
+        latitude = 'Latitude',
+        longitude = 'Longitude',
+        id_0 = ''
+    );
+
+CREATE OR REPLACE TABLE bv_postal_codes I18N fr_euro (
+        postalcode:text,
+        placename:text,
+        state:text,
+        stateabbreviation:text,
+        city:text,
+        latitude:text,
+        longitude:text,
+        id_0:text
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    PRIMARY KEY ( 'postalcode' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_postal_codes(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD postalcode NOS ZERO ()
+             ADD placename NOS ZERO ()
+             ADD state NOS ZERO ()
+             ADD stateabbreviation NOS ZERO ()
+             ADD city NOS ZERO ()
+             ADD latitude NOS ZERO ()
+             ADD longitude NOS ZERO ()
+             ADD id_0 NOS ZERO ()
+        )
+        OUTPUTLIST (city, id_0, latitude, longitude, placename, postalcode, state, stateabbreviation
+        )
+        WRAPPER (df ds_postal_codes)
+    );
+

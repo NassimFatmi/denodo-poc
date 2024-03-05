@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATABASE ebay_poc '';
+
+ALTER DATABASE ebay_poc
+  CHARSET DEFAULT;
+

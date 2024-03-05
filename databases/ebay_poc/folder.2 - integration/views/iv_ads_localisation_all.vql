@@ -1,0 +1,39 @@
+﻿CREATE OR REPLACE VIEW iv_ads_localisation_all FOLDER = '/2 - integration' (
+    id_ad (description = 'Id for the ad (created)'),
+    id_vehicule (description = 'id for the vehicule'),
+    id_vehicule_details (description = 'id for vehicule details
+'),
+    id_seller (description = 'id for the seller'),
+    price (description = 'Le prix de vente sur l''annonce
+Si le prix est non renseigné : -1
+Sinon : Prix'),
+    seller (description = 'The type of the seller : 
+- gewerblich
+- privat'),
+    offertype (description = 'Offer type : 
+- Angebot
+- Gesuch'),
+    vehicletype (description = 'Type de vehicule (SUV, Limosine...)
+if not set then : N/A
+Sinn : vehicule type'),
+    gearbox (description = 'Gearbox type (Mannuel, Auto...)
+If not set then it return N/A
+if set then it returns the value'),
+    powerps (description = 'The power of the vehicule in PS
+If not set then return -1 (case power = 0)
+else return the power'),
+    model (description = 'The model of the car in the bran (Golf, M5...)
+If the model is not set the return N/A
+Else return the model'),
+    kilometer (description = 'The mileage of the vehicule in Km'),
+    monthofregistration (description = 'The month of registration :
+between 1 - 12
+else -1'),
+    fueltype (description = 'The type of fuel used by the vehicule (Ex: Benzin, ..)'),
+    brand (description = 'The brand of the vehicule (bmw, volkswagen..)')
+ )
+ AS SELECT rownum() AS id_ad, rownum() AS id_vehicule, rownum() AS id_vehicule_details, rownum() AS id_seller, bv_auto.name AS name, case WHEN (bv_auto.price <= 10) THEN -1 WHEN (bv_auto.price > 600000) THEN -1 ELSE bv_auto.price END AS price, bv_auto.seller AS seller, bv_auto.offertype AS offertype, bv_auto.datecrawled AS datecrawled, bv_auto.datecreated AS datecreated, bv_auto.lastseen AS lastseen, bv_auto.abtest AS abtest, case WHEN ((bv_auto.vehicletype = '' OR bv_auto.vehicletype is null )) THEN 'N/A' ELSE bv_auto.vehicletype END AS vehicletype, case WHEN ((bv_auto.gearbox = '' OR bv_auto.gearbox is null )) THEN 'N/A' ELSE bv_auto.gearbox END AS gearbox, case WHEN (bv_auto.powerps <= 0) THEN -1 ELSE bv_auto.powerps END AS powerps, case WHEN ((bv_auto.model = '' OR bv_auto.model is null )) THEN 'N/A' ELSE bv_auto.model END AS model, bv_auto.kilometer AS kilometer, case WHEN ((bv_auto.monthofregistration < 1 OR bv_auto.monthofregistration > 12)) THEN -1 ELSE bv_auto.monthofregistration END AS monthofregistration, case WHEN ((bv_auto.fueltype = '' OR bv_auto.fueltype is null )) THEN 'N/A' ELSE bv_auto.fueltype END AS fueltype, bv_auto.brand AS brand, bv_auto.notrepaireddamage AS notrepaireddamage, bv_auto.nrofpictures AS nrofpictures, bv_postal_codes.postalcode AS postalcode, bv_postal_codes.placename AS placename, bv_postal_codes.state AS state, bv_postal_codes.stateabbreviation AS stateabbreviation, bv_postal_codes.city AS city, bv_postal_codes.latitude AS latitude, bv_postal_codes.longitude AS longitude, bv_auto.yearofregistration AS yearofregistration, iv_vehicules_prices.mean_price AS mean_price, iv_vehicules_prices.stdv_price AS stdv_price FROM (bv_auto AS bv_auto INNER JOIN bv_postal_codes AS bv_postal_codes ON bv_auto.postalcode = bv_postal_codes.postalcode ) INNER JOIN iv_vehicules_prices AS iv_vehicules_prices ON (bv_auto.brand = iv_vehicules_prices.brand AND bv_auto.model = iv_vehicules_prices.model) ;
+
+ALTER VIEW iv_ads_localisation_all
+ LAYOUT (bv_auto = [343, 124, 200, 200], bv_postal_codes = [792, 121, 200, 200], iv_vehicules_prices = [706, 285, 200, 200]);
+

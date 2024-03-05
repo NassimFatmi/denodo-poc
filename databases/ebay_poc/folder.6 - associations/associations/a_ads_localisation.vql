@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_ads_localisation REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT ads_fact localisations_dim PRINCIPAL (0,1)
+    ENDPOINT localisations_dim ads_fact (0,*)
+    ADD MAPPING postal_code=id_dim_localisation;
+
+ALTER ASSOCIATION a_ads_localisation
+ LAYOUT (localisations_dim = [184, 94, 200, 200], ads_fact = [338, 128, 200, 200]);
+

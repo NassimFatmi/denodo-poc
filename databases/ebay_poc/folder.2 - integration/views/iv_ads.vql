@@ -1,0 +1,13 @@
+﻿CREATE OR REPLACE VIEW iv_ads FOLDER = '/2 - integration'
+    PRIMARY KEY ( 'id_ad' ) (
+    first_time_seen (description = 'The time between the creation of the ad and the first seen (exploitation)
+In minutes'),
+    life_time (description = 'Life time of an ad
+It is calculated with the last time the ad was seen minus the crawled time
+it means that the ad is still targeting people (this mesure is in hours)')
+ )
+ AS SELECT iv_ads_localisation_all.id_ad AS id_ad, iv_ads_localisation_all.id_vehicule AS id_vehicule, iv_ads_localisation_all.id_vehicule_details AS id_vehicule_details, iv_ads_localisation_all.postalcode AS id_localisation, formatdate('yyyyMMddhh:mm:ss', iv_ads_localisation_all.datecrawled) AS id_date_crawled, formatdate('yyyyMMdd', iv_ads_localisation_all.datecreated) AS id_date_created, iv_ads_localisation_all.name AS name, iv_ads_localisation_all.price AS price, iv_ads_localisation_all.seller AS seller, iv_ads_localisation_all.offertype AS offertype, ((gettimeinmillis(iv_ads_localisation_all.datecrawled)-gettimeinmillis(iv_ads_localisation_all.datecreated))/(1000*60)) AS first_time_seen, ((gettimeinmillis(iv_ads_localisation_all.lastseen)-gettimeinmillis(iv_ads_localisation_all.datecrawled))/((1000*60)*60)) AS life_time FROM iv_ads_localisation_all WHERE (price > (mean_price-(3*stdv_price)) AND price < (mean_price+(3*stdv_price)));
+
+ALTER VIEW iv_ads
+ LAYOUT (iv_ads_localisation_all = [140, 65, 200, 200]);
+

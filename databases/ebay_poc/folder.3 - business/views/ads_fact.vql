@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW ads_fact FOLDER = '/3 - business'
+    PRIMARY KEY ( 'id_ad' ) AS SELECT iv_ads.id_ad AS id_ad, iv_ads.id_vehicule AS id_dim_vehicule, iv_ads.id_vehicule_details AS id_dim_vehicule_details, iv_ads.id_localisation AS id_dim_localisation, iv_seller.id_seller AS id_dim_seller, iv_ads.id_date_created AS id_dim_date_created, iv_ads.id_date_crawled AS id_dim_date_crawled, iv_ads.name AS name, iv_ads.price AS price, iv_ads.first_time_seen AS first_time_seen, iv_ads.life_time AS life_time FROM iv_ads AS iv_ads INNER JOIN iv_seller AS iv_seller ON (iv_ads.seller = iv_seller.seller AND iv_ads.offertype = iv_seller.offertype) ;
+
+ALTER VIEW ads_fact
+ LAYOUT (iv_ads = [262, 175, 200, 200], iv_seller = [827, 211, 200, 200]);
+

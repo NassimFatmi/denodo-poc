@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dates_crawled_dim FOLDER = '/3 - business' AS SELECT DISTINCT iv_dates_crawled.id AS id, iv_dates_crawled.date AS date, gethour(iv_dates_crawled.date) AS hour_crawled FROM iv_dates_crawled;
+
+ALTER VIEW dates_crawled_dim
+ LAYOUT (iv_dates_crawled = [197, 68, 200, 200]);
+
